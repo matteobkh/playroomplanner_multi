@@ -1,0 +1,101 @@
+/**
+ * STYLE.CSS - Foglio di stile personalizzato
+ * 
+ * Stili aggiuntivi a Bootstrap per personalizzare l'applicazione
+ */
+
+/* Stile generale del body */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+}
+
+/* Il contenuto principale occupa lo spazio disponibile */
+main {
+    flex: 1;
+}
+
+/* Card personalizzate */
+.card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: none;
+}
+
+.card-header {
+    background-color: #0d6efd;
+    color: white;
+    font-weight: bold;
+}
+
+/* Stile per le prenotazioni nel calendario */
+.prenotazione-item {
+    background-color: #e3f2fd;
+    border-left: 4px solid #0d6efd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+/* Badge colorati per lo stato degli inviti */
+.badge-attesa {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.badge-accettato {
+    background-color: #28a745;
+}
+
+.badge-rifiutato {
+    background-color: #dc3545;
+}
+
+/* Stile per i form */
+.form-label {
+    font-weight: 500;
+}
+
+/* Margine superiore per il contenuto */
+.content-wrapper {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Stile per la pagina di login/registrazione */
+.auth-card {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+/* Tabella responsive */
+.table-responsive {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Hover sulle righe della tabella */
+.table-hover tbody tr:hover {
+    background-color: #e3f2fd;
+}
+
+/* Bottoni azione nelle tabelle */
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Alert personalizzati */
+.alert {
+    border-radius: 8px;
+}
+
+/* Stile per il selettore settimana */
+.week-selector {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
