@@ -19,6 +19,14 @@ require_once "common/funzioni.php";
     <?php require "common/nav.php"; ?>
     
     <main class="container content-wrapper">
+        
+        <?php if (isset($_GET["account_eliminato"])): ?>
+            <div class="alert alert-success alert-dismissible fade show">
+                <i class="bi bi-check-circle"></i> Il tuo account è stato eliminato con successo.
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        <?php endif; ?>
+        
         <!-- Messaggio di benvenuto -->
         <div class="text-center mb-5">
             <h1 class="display-4">
@@ -104,16 +112,32 @@ require_once "common/funzioni.php";
                 
                 <?php if (isResponsabile()): ?>
                     <!-- Card Nuova Prenotazione (solo responsabili) -->
-                    <div class="col-md-12">
-                        <div class="card bg-warning bg-opacity-10 border-warning">
+                    <div class="col-md-6">
+                        <div class="card bg-warning bg-opacity-10 border-warning h-100">
                             <div class="card-body text-center">
                                 <i class="bi bi-plus-circle display-4 text-warning mb-3"></i>
-                                <h5 class="card-title">Sei un Responsabile</h5>
+                                <h5 class="card-title">Nuova Prenotazione</h5>
                                 <p class="card-text">
-                                    Puoi creare nuove prenotazioni per le sale prove del tuo settore
+                                    Crea nuove prenotazioni per le sale prove
                                 </p>
                                 <a href="nuova_prenotazione.php" class="btn btn-warning">
-                                    <i class="bi bi-plus"></i> Nuova Prenotazione
+                                    <i class="bi bi-plus"></i> Crea
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Card Gestione Prenotazioni (solo responsabili) -->
+                    <div class="col-md-6">
+                        <div class="card bg-secondary bg-opacity-10 border-secondary h-100">
+                            <div class="card-body text-center">
+                                <i class="bi bi-gear display-4 text-secondary mb-3"></i>
+                                <h5 class="card-title">Gestisci Prenotazioni</h5>
+                                <p class="card-text">
+                                    Modifica o elimina le tue prenotazioni esistenti
+                                </p>
+                                <a href="gestione_prenotazioni.php" class="btn btn-secondary">
+                                    <i class="bi bi-pencil"></i> Gestisci
                                 </a>
                             </div>
                         </div>

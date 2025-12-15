@@ -121,6 +121,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </button>
                             </div>
                         </form>
+                        
+                        <!-- Sezione eliminazione account -->
+                        <hr class="my-4">
+                        <div class="card border-danger">
+                            <div class="card-header bg-danger text-white">
+                                <i class="bi bi-exclamation-triangle"></i> Zona Pericolosa
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    <strong>Elimina il tuo account</strong><br>
+                                    <small class="text-muted">
+                                        Questa azione è irreversibile. Tutti i tuoi dati, inviti e partecipazioni verranno eliminati.
+                                    </small>
+                                </p>
+                                <a href="elimina_account.php" class="btn btn-outline-danger"
+                                   onclick="return confirm('Sei ASSOLUTAMENTE sicuro di voler eliminare il tuo account? Questa azione è IRREVERSIBILE!')">
+                                    <i class="bi bi-trash"></i> Elimina Account
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

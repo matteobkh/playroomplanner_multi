@@ -1,6 +1,6 @@
 # Play Room Planner
 
-Sistema di gestione prenotazioni sale prove per un'associazione culturale. Versione multi-page.
+Sistema di gestione prenotazioni sale prove per un'associazione culturale.
 
 ## Requisiti
 
@@ -36,7 +36,6 @@ define('DB_PASS', '');
 Apri nel browser: http://localhost/playroomplanner
 
 ## Script SQL per creare e popolare il database
-Da inserire tramite phpMyAdmin
 
 ```sql
 -- Creazione database
@@ -172,25 +171,28 @@ INSERT INTO invito (iscritto_email, prenotazione_id, risposta) VALUES
 
 ```
 playroomplanner/
-├── common/           # File condivisi
-│   ├── config.php    # Configurazione database
-│   ├── funzioni.php  # Funzioni di backend
-│   ├── header.html   # Header HTML comune
-│   ├── nav.php       # Barra navigazione
-│   └── footer.html   # Footer comune
+├── common/                    # File condivisi
+│   ├── config.php             # Configurazione database
+│   ├── funzioni.php           # Funzioni di backend
+│   ├── header.html            # Header HTML comune
+│   ├── nav.php                # Barra navigazione
+│   └── footer.html            # Footer comune
 ├── css/
-│   └── style.css     # Stili personalizzati
-├── index.php         # Home page
-├── login.php         # Pagina login
-├── registrazione.php # Pagina registrazione
-├── logout.php        # Script logout
-├── profilo.php       # Profilo utente
-├── sale.php          # Visualizzazione sale
-├── inviti.php        # Gestione inviti
-├── impegni.php       # Impegni settimanali
-├── nuova_prenotazione.php # Crea prenotazione (solo responsabili)
-├── api.php           # API RESTful
-└── README.md         # Questo file
+│   └── style.css              # Stili personalizzati
+├── index.php                  # Home page
+├── login.php                  # Pagina login
+├── registrazione.php          # Pagina registrazione
+├── logout.php                 # Script logout
+├── profilo.php                # Profilo utente (visualizza/modifica)
+├── elimina_account.php        # Eliminazione account utente
+├── sale.php                   # Visualizzazione sale e prenotazioni settimanali
+├── inviti.php                 # Gestione inviti
+├── impegni.php                # Impegni settimanali utente
+├── nuova_prenotazione.php     # Crea prenotazione (solo responsabili)
+├── gestione_prenotazioni.php  # Lista prenotazioni responsabile (modifica/elimina)
+├── modifica_prenotazione.php  # Modifica prenotazione esistente
+├── api.php                    # API RESTful
+└── README.md                  # Questo file
 ```
 
 ## API Endpoints
@@ -198,15 +200,35 @@ playroomplanner/
 | Metodo | Endpoint | Descrizione |
 |--------|----------|-------------|
 | POST | api.php?action=login | Login utente |
-| POST | api.php?action=register | Registrazione |
-| GET | api.php?action=user | Profilo utente |
+| POST | api.php?action=register | Registrazione nuovo utente |
+| GET | api.php?action=user | Profilo utente loggato |
+| PUT | api.php?action=utente | Modifica dati utente |
+| DELETE | api.php?action=utente | Elimina account utente |
 | POST | api.php?action=logout | Logout |
-| GET | api.php?action=prenotazioni | Lista prenotazioni |
+| GET | api.php?action=prenotazioni | Lista prenotazioni (filtri: sala_id, week) |
 | POST | api.php?action=prenotazioni | Crea prenotazione |
-| GET | api.php?action=inviti | Lista inviti |
+| PUT | api.php?action=prenotazioni | Modifica prenotazione |
+| DELETE | api.php?action=prenotazioni&id=X | Elimina prenotazione |
+| GET | api.php?action=inviti | Lista inviti utente |
 | POST | api.php?action=inviti | Rispondi invito |
 | GET | api.php?action=sale | Lista sale |
 | GET | api.php?action=impegni | Impegni settimanali |
+
+## Funzionalità Implementate
+
+### Gestione Utenti
+- **Inserimento**: Registrazione nuovo utente (registrazione.php, api.php?action=register)
+- **Modifica**: Modifica profilo utente (profilo.php, api.php?action=utente PUT)
+- **Cancellazione**: Eliminazione account (elimina_account.php, api.php?action=utente DELETE)
+
+### Gestione Prenotazioni
+- **Inserimento**: Creazione nuova prenotazione (nuova_prenotazione.php, api.php?action=prenotazioni POST)
+- **Modifica**: Modifica prenotazione esistente (modifica_prenotazione.php, api.php?action=prenotazioni PUT)
+- **Cancellazione**: Eliminazione prenotazione (gestione_prenotazioni.php, api.php?action=prenotazioni DELETE)
+
+### Visualizzazioni
+- **Prenotazioni per sala/settimana**: sale.php, api.php?action=prenotazioni&sala_id=X&week=YYYY-MM-DD
+- **Impegni utente per settimana**: impegni.php, api.php?action=impegni&week=YYYY-MM-DD
 
 ## Credenziali di test
 

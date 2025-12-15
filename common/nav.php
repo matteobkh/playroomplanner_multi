@@ -41,6 +41,11 @@
                                 <i class="bi bi-plus-circle"></i> Nuova Prenotazione
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gestione_prenotazioni.php">
+                                <i class="bi bi-gear"></i> Gestisci Prenotazioni
+                            </a>
+                        </li>
                     <?php endif; ?>
                 <?php endif; ?>
             </ul>
